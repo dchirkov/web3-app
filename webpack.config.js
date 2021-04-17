@@ -1,7 +1,7 @@
 const path = require('path');
 
 const main = (name, minimize) => ({
-    entry: 'index.js',
+    entry: './index.js',
     mode: "production",
     optimization: {
         minimize,
