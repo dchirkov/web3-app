@@ -1,7 +1,7 @@
 import Waves from "@waves/signer";
 import Provider from "@waves.exchange/provider-web";
 
-const waves = new Waves({NODE_URL: 'https://pool.testnet.wavesnodes.com'});
+const waves = new Waves({NODE_URL: 'https://nodes-testnet.wavesnodes.com'});
 const provider = new Provider('https://testnet.waves.exchange/signer/');
 
 waves.setProvider(provider);
