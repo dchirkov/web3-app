@@ -1,5 +1,5 @@
 import Waves from "@waves/signer";
-import Provider from "@waves.exchange/provider-web";
+import Provider from "@waves.exchange/provider-cloud";
 
 const waves = new Waves({NODE_URL: 'https://nodes-testnet.wavesnodes.com'});
 const provider = new Provider('https://testnet.waves.exchange/signer/');
