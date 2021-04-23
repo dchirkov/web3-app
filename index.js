@@ -1,26 +1,26 @@
-import Waves from "@waves/signer";
-import Provider from "@waves.exchange/provider-cloud";
+import Signer from '@waves/signer';
+import { ProviderWeb } from '@waves.exchange/provider-web';
 
-const waves = new Waves({NODE_URL: 'https://nodes-testnet.wavesnodes.com'});
-const provider = new Provider('https://testnet.waves.exchange/signer/');
+const signer = new Signer({NODE_URL: 'https://nodes-testnet.wavesnodes.com'});
+// const provider = new ProviderWeb('https://testnet.waves.exchange/signer/');
 
-waves.setProvider(provider);
+signer.setProvider(new ProviderWeb('https://testnet.waves.exchange/signer'));
 
 // import Signer from '@waves/signer';
 // import { ProviderSeed } from '@waves/provider-seed';
 // import { libs } from '@waves/waves-transactions';
  
 // const seed = libs.crypto.randomSeed(15);
-// const waves = new Signer({
+// const signer = new Signer({
 //   // Specify URL of the node on Testnet
 //   NODE_URL: 'https://pool.testnet.wavesnodes.com'
 // });
-// waves.setProvider(new ProviderSeed(seed));
+// signer.setProvider(new ProviderSeed(seed));
 
 
 document.querySelector(".js-login").addEventListener("click", async function (event) {
     try {
-        const userData = await waves.login();
+        const userData = await signer.login();
         event.target.classList.add("clicked");
         event.target.innerHTML = `
             authorized as <br>
@@ -35,7 +35,7 @@ document.querySelector(".js-login").addEventListener("click", async function (ev
 // calling a "faucet" script wavesexplorer.com/tesnet/address/3MuN7D8r19zdvSpAd1L91Gs88bcgwUFy2mn/script
 // this will top up the account balance, but only once
 document.querySelector(".js-invoke").addEventListener("click", function () {
-    waves.invoke({
+    signer.invoke({
         dApp: "3MuN7D8r19zdvSpAd1L91Gs88bcgwUFy2mn",
         call: {
             function: "faucet"
@@ -47,7 +47,7 @@ document.querySelector(".js-invoke").addEventListener("click", function () {
 // just putting some data into account storage
 document.querySelector(".js-data").addEventListener("click", function () {
     const date = new Date();
-    waves.data({
+    signer.data({
         data: [
             {
                 key: "lastCall",
@@ -61,7 +61,7 @@ document.querySelector(".js-data").addEventListener("click", function () {
 
 // just transferring some WAVES token to Test Accoutnt 2
 document.querySelector(".js-transfer").addEventListener("click", function () {
-    waves.transfer({
+    signer.transfer({
         recipient: "3MuAMMFgHdGZFsnxX8emNP9db28uFA3wyXj",
         amount: 1
     }).broadcast().then(console.log)
