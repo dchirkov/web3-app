@@ -1,7 +1,7 @@
 {
-  "name": "waves-web3",
+  "name": "web3-app",
   "version": "1.0.0",
-  "description": "A first web3 application",
+  "description": "web3 application",
   "main": "server.js",
   "scripts": {
     "build": "webpack",
@@ -14,8 +14,6 @@
     "web3",
     "webplatform"
   ],
-  "author": "Maciej Gulak",
-  "license": "ISC",
   "dependencies": {
     "@waves.exchange/provider-web": "^0.2.3",
     "@waves/signer": "^0.1.2",
