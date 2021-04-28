@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   authWithKeeper() {
-    const authData = { data: 'Auth on my site' }
+    const authData = { data: 'Auth on a site' }
     if (WavesKeeper) {
       WavesKeeper.auth(authData)
         .then((auth) => {
