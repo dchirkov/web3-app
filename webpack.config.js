@@ -1,29 +1,19 @@
-const path = require('path');
-
-const main = (name, minimize) => ({
-    entry: './index.js',
-    mode: "production",
-    optimization: {
-        minimize,
-        usedExports: true
-    },
-    resolve: {
-        extensions: ['.js'],
-    },
+module.exports = {
+    entry: [
+      './src/main.js',
+    ],
     output: {
-        globalObject: "this",
-        filename: name,
-        path: path.resolve(__dirname, 'dist'),
-    }
-});
-
-module.exports = [
-    {
-        ...main('dapp.js', false),
-        devtool: 'inline-source-map',
-        mode: "development",
+        filename: 'build.js',
     },
-    {
-        ...main('dapp.min.js', true)
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            }
+        ]
     }
-];
+};
